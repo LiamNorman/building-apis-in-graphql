@@ -1,0 +1,31 @@
+# Designed GraphQL schema
+type Station {
+    id: ID!
+    name: String!
+    description: String!
+    url: String!
+    active: Boolean
+    followers: Int
+}
+
+type User {
+    # note we are leveraging Django's user model so there are more fields available
+    id: ID!
+    username: String!
+    password: String!
+    firstName: String!
+    lastName: String!
+}
+
+type Podcast {
+    id: ID!
+    name: String!
+    description: String!
+    url: String!
+    postedBy: User!
+}
+
+type Favourite {
+    user: User
+    podcast: Podcast
+}
