@@ -31,7 +31,7 @@ All queries are stored in `graphpod/queries.graphql`
 
 ## Schema 
 
-Schema design is stored in `graphpod/schema.graphql`
+Schema design is stored in `graphpod/designedschema.graphql`
 
 ## Logging in as a User
 Please refer to the queries.graphql to see how to authenticate. Run the createUser and tokenAuth mutations to get the token of your user. Once you have obtained the token, you will
