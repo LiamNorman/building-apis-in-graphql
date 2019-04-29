@@ -21,9 +21,15 @@ python manage.py migrate
 python manage.py runserver
 ```
 
+## Migrations
+All migrations are already applied however if you edit any of the models.py files then simply tell Django to regenerate the migrations and run the new migrations like so:
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
 ## Slides
 The presentation can be found in the `slides/` folder
-
 
 ## Queries
 
