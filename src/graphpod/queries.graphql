@@ -1,0 +1,160 @@
+# Station Queries
+
+query {
+  stations {
+    id
+    name
+    description
+    url
+  }
+}
+
+query {
+  stations {
+    id
+    name
+  }
+}
+
+# Station Mutations
+
+mutation {
+  createStation (
+    description:"A myriad of Python related podcasts"
+    url:"https://www.pythonpodcast.com/"
+    name:"The Python Podcast"
+   	followers:100
+    active:true
+  ) {
+    description
+    url
+    name
+    followers
+    active
+
+  }
+}
+
+mutation {
+  deleteStation(id:1) {
+    ok
+    id
+  }
+}
+
+mutation {
+  updateStation (
+    id:2
+    description:"A myriad of Python related podcasts"
+    url:"https://www.pythonpodcast.com/"
+    name:"The Python Podcast"
+   	followers:200
+    active:true
+  ) {
+    ok
+    description
+    url
+    name
+    followers
+    active
+
+  }
+}
+
+# Podcast Queries
+
+query {
+  podcasts {
+    id
+    url
+    description
+  }
+}
+
+query {
+  podcasts {
+    id
+    url
+    description
+    postedBy {
+      id
+      username
+      isActive
+    }
+  }
+}
+
+# Podcast Mutations
+
+mutation {
+  createPodcast (
+    url:"https://mypodcast.example.com"
+  	description:"Another Example Podcast"
+  ) {
+    id
+    url
+    description
+    postedBy {
+      id
+      username
+    }
+  }
+}
+
+mutation {
+  deletePodcast(id:0) {
+    ok
+    id
+  }
+}
+
+mutation {
+  deletePodcast(id:1) {
+    ok
+  }
+}
+
+# Favouriting Podcast
+
+mutation {
+  favouritePodcast (podcastId:1) {
+  	podcast{
+      id
+    }
+  }
+}
+
+# Query Favourites
+
+query {
+  favourites {
+    id
+    podcast {
+      id
+      description
+      url
+    }
+    user {
+      id
+      username
+    }
+  }
+}
+
+# User Auth
+
+mutation {
+  createUser (username: "liam", email:"liam@example.com", password: "test") {
+  	user {
+      id
+    }
+  }
+}
+
+mutation {
+  tokenAuth (username: "liam", password: "test") {
+  	token
+    # set this token in the JWT Headers of GraphiQL Client
+  }
+}
+
